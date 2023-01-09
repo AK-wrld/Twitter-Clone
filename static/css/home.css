@@ -1,6 +1,6 @@
 .main {
     display: flex;
-    
+    padding: 0px;
 }
 .navCont {
     position: sticky;
@@ -9,18 +9,18 @@
     background-color: white;
 }
 .sidebarCont {
-background-color: aqua;
-height: 100vh;
-width: 30%;
+/* background-color: aqua; */
+position: fixed;
 }.homeCont {
     /* background-color: blue; */
-    width: 40%;
+    width: 60%;
     height: 100vh;
     border-left: 1px solid lightgrey;
     border-right: 1px solid lightgray;
+    margin-left: 350px;
 }.asideCont {
-    background-color: red;
-    width: 30%;
+    /* background-color: red; */
+    width: 40%;
     height: 100vh;
 }
 .tweetBox {
@@ -50,10 +50,14 @@ width: 30%;
         display: flex;
         align-items: center;
     }
-    .imageCont > img {
+    .imageCont img {
         width: 70px;
         height: 70px;
         border-radius: 50%;
+        cursor: pointer;
+    }
+    .imageCont img:hover {
+        filter: brightness(0.8);
     }
     .tweetBtns {
         height: 50%;
@@ -73,6 +77,16 @@ width: 30%;
     color: white;
     font-weight: bold;
 
+    }
+    .tweetBtns>i {
+    
+        /* padding: 5px; */
+        border-radius: 26px;
+       
+    
+    }
+    .tweetBtns>i:hover {
+        background-color: lightgrey;
     }
     .hr {
         color: lightgray;

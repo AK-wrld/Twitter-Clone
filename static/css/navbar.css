@@ -12,4 +12,7 @@
 }
 .inputBox {
     border-radius: 50px;
+    background-color: lightgray;
+    padding-top: 7px;
+    padding-bottom: 7px;
 }

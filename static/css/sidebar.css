@@ -1,9 +1,11 @@
+
 .sidebarContainer {
     width: 280px;
     height: 740px;
     /* position: fixed; */
     position: sticky;
     top: 70px;
+
 }
 
 .TweetBtnLi {

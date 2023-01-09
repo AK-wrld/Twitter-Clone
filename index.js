@@ -10,6 +10,9 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.static(path.join(__dirname,'static')))
 app.set('view engine', 'hbs'); 
 hbs.registerPartials(__dirname + '/views/partials', function (err) {});
+app.get('/',(req,res)=> {
+    res.redirect('/home')
+})
 app.get('/home',(req,res)=> {
     res.render('home')
 })

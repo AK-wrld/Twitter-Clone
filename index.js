@@ -5,6 +5,7 @@ const hbs = require('hbs');
 const mongoose = require('mongoose');
 var methodOverride = require('method-override');
 const Twitter = require('./models/Twitter');
+const User = require('./models/User');
 app.use(methodOverride('_method'));
 const port=80;
 
@@ -21,19 +22,53 @@ async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/Twitter');
   console.log("we are connected")
 }
+
+//Endpoints for Login
 app.get('/',(req,res)=> {
+    res.redirect('/login')
+})
+
+app.get('/login',(req,res)=> {
     res.render('login')
 })
+
+//Confirming User and fetching Data
 app.post('/home',async (req,res)=> {
-    const {username}=req.body
+    const {username,password}=req.body
     // console.log(req.body)
+    const user = await User.find({username:username})
+    // console.log(user)
+    if(user==false) {
+        return res.send("User not found")
+    }
+    // console.log(user)
+    // console.log(user[0].password)
+    // console.log(password)
+    if(password!= user[0].password){
+        return res.send("Invalid password")
+    }
     const tweets = await Twitter.find({username:username})
-    console.log(tweets)
+    // console.log(tweets)
     res.render('home',{
         
         username:username,
-        tweets:tweets
+        tweets:tweets,
+        name:user[0].name
     })
+})
+
+//Enpoints for Signup
+app.get('/signup',(req,res)=> {
+    res.render('signup')
+})
+app.post('/newuser',async(req,res)=> {
+    const {name,username,password}=req.body;
+    const newUser = await User.create({
+        name:name,
+        username:username,        
+        password:password
+    })
+    res.redirect("/login")
 })
 
 app.get('/profile',(req,res)=>{

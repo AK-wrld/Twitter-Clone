@@ -94,3 +94,8 @@ position: fixed;
     .hr {
         color: lightgray;
     }
+    .profileBtn {
+        border: none;
+        background-color: transparent;
+        border-radius: 50%;
+    }

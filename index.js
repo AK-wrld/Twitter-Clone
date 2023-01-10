@@ -16,7 +16,9 @@ app.get('/',(req,res)=> {
 app.get('/home',(req,res)=> {
     res.render('home')
 })
-
+app.get('/profile',(req,res)=>{
+    res.render('profile')
+})
 app.listen(port,()=> {
     console.log(`Server running at port ${port}`);
 })

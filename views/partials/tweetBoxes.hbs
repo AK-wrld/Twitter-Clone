@@ -1,0 +1,29 @@
+{{#if tweets}}
+{{#each tweets}}
+<div class="container tweetBoxes">
+    <div class="userImg container">
+        <form action="#" method="get">
+        <img src="/Images/twitterLogo.png" alt="">
+
+        </form>
+    </div>
+    <div class="container userCont">
+        <div class="container username">
+            <span><strong>{{this.name}}</strong></span>&nbsp; <span style="color: gray;font-size: 15px;">@{{this.username}}</span>&nbsp;<span style="color: gray;font-size: 13px;">.{{this.date}}</span>
+        </div>
+        <div class="container tweetShow">
+            <p>{{this.description}}</p>
+        </div>
+        <div class="tweetBtnsCont container">
+            <button class="tweetBtns"><i class="fa-solid fa-chart-simple" ></i></button>
+            <button class="tweetBtns"><i class="fa-regular fa-comment" ></i></button>
+            <button class="tweetBtns"><i class="fa-solid fa-retweet" ></i></button>
+            <button class="tweetBtns"><i class="fa-regular fa-heart" ></i></button>
+            <button class="tweetBtns"><i class="bi bi-upload"></i></button>
+        </div>
+    </div>
+</div><hr class="hr">
+{{/each}}
+{{else}}
+<h5 style="text-align: center;">Write your first tweet</h5>
+{{/if}}

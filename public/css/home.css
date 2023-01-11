@@ -4,7 +4,9 @@
 }
 .navCont {
     position: sticky;
-    top: 0px;
+
+    top: 0%;
+
     z-index: 2;
     background-color: white;
 }
@@ -22,6 +24,7 @@ position: fixed;
     /* background-color: red; */
     width: 40%;
     /* height: 100vh; */
+
 }
 .tweetBox {
     display: flex;

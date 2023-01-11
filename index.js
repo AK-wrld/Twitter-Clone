@@ -10,7 +10,7 @@ app.use(methodOverride('_method'));
 const port=80;
 
 app.use(express.urlencoded({extended:true}))
-app.use(express.static(path.join(__dirname,'static')))
+app.use(express.static(path.join(__dirname,'public')))
 app.set('view engine', 'hbs'); 
 hbs.registerPartials(__dirname + '/views/partials', function (err) {});
 
@@ -30,6 +30,7 @@ app.get('/',(req,res)=> {
 
 app.get('/login',(req,res)=> {
     res.render('login')
+
 })
 
 //Confirming User and fetching Data
@@ -57,6 +58,7 @@ app.post('/home',async (req,res)=> {
     })
 })
 
+
 //Enpoints for Signup
 app.get('/signup',(req,res)=> {
     res.render('signup')
@@ -71,9 +73,43 @@ app.post('/newuser',async(req,res)=> {
     res.redirect("/login")
 })
 
-app.get('/profile',(req,res)=>{
-    res.render('profile')
+app.post('/addtweet/:username/:name',async(req,res)=>{
+    const {username,name} = req.params;
+    const newTweet = await Twitter.create({
+        name:name,
+        username:username,
+        description:req.body.description
+    })
+    console.log(username)
+    res.status("200").redirect(`/home/${username}`)
+    // res.send()
 })
+
+app.get('/home/:username', async(req,res)=>{
+    const {username}=req.params
+    const user = await User.find({username:username})
+    const tweets = await Twitter.find({username:username})
+    res.render('home',{
+        username:username,
+        tweets:tweets,
+        name:user[0].name,
+        date:user[0].date,
+        
+    })
+})
+app.get('/profile/:username',async(req,res)=> {
+    const {username}=req.params
+    const user = await User.find({username:username})
+    const tweets = await Twitter.find({username:username})
+    res.render('profile',{
+        username:username,
+        tweets:tweets,
+        name:user[0].name,
+        date:user[0].date,
+        
+    })
+})
+
 app.listen(port,()=> {
     console.log(`Server running at port ${port}`);
 })

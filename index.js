@@ -30,6 +30,7 @@ app.get('/',(req,res)=> {
 
 app.get('/login',(req,res)=> {
     res.render('login')
+
 })
 
 //Confirming User and fetching Data
@@ -57,6 +58,7 @@ app.post('/home',async (req,res)=> {
     })
 })
 
+
 //Enpoints for Signup
 app.get('/signup',(req,res)=> {
     res.render('signup')
@@ -80,8 +82,6 @@ app.post('/addtweet/:username/:name',async(req,res)=>{
     })
     res.redirect('/home')
 })
-
-
 
 app.get('/profile',(req,res)=>{
     res.render('profile')

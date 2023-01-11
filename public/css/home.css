@@ -4,7 +4,9 @@
 }
 .navCont {
     position: sticky;
+
     top: 0%;
+
     z-index: 2;
     background-color: white;
 }
@@ -14,14 +16,15 @@ position: fixed;
 }.homeCont {
     /* background-color: blue; */
     width: 60%;
-    height: 100vh;
+    /* height: 100vh; */
     border-left: 1px solid lightgrey;
     border-right: 1px solid lightgray;
-    margin-left: 350px;
+    /* margin-left: 350px; */
 }.asideCont {
     /* background-color: red; */
     width: 40%;
-    height: 100vh;
+    /* height: 100vh; */
+
 }
 .tweetBox {
     display: flex;
@@ -90,4 +93,9 @@ position: fixed;
     }
     .hr {
         color: lightgray;
+    }
+    .profileBtn {
+        border: none;
+        background-color: transparent;
+        border-radius: 50%;
     }

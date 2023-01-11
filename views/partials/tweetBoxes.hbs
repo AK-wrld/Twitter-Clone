@@ -1,3 +1,5 @@
+{{#if tweets}}
+{{#each tweets}}
 <div class="container tweetBoxes">
     <div class="userImg container">
         <form action="#" method="get">
@@ -7,10 +9,10 @@
     </div>
     <div class="container userCont">
         <div class="container username">
-            <span><strong>Name</strong></span>&nbsp;<span>@username</span>&nbsp;<span>Date</span>
+            <span><strong>{{this.name}}</strong></span>&nbsp; <span style="color: gray;font-size: 15px;">@{{this.username}}</span>&nbsp;<span style="color: gray;font-size: 13px;">.{{this.date}}</span>
         </div>
         <div class="container tweetShow">
-            <p>This is a Tweet</p>
+            <p>{{this.description}}</p>
         </div>
         <div class="tweetBtnsCont container">
             <button class="tweetBtns"><i class="fa-solid fa-chart-simple" ></i></button>
@@ -21,3 +23,7 @@
         </div>
     </div>
 </div><hr class="hr">
+{{/each}}
+{{else}}
+<h5 style="text-align: center;">Write your first tweet</h5>
+{{/if}}

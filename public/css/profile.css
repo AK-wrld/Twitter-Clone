@@ -1,0 +1,44 @@
+.mid {
+    /* display: flex; */
+    flex-direction: column;
+    height: 100vh;
+    /* background-color: aqua; */
+    justify-content: space-between;
+}
+.imgCardCont {
+    width: 100%;
+    height: 30%;
+    background-color: lightgray;
+}
+.profileCont {
+    width: 100%;
+    height:40%;
+    display: grid;
+    grid-template-rows: 3fr 3fr 2fr 2fr 1fr;
+}
+.profileImgCont {
+    display: flex;
+    justify-content:space-between ;
+}
+.profileImg {
+    width: 30%;
+    position: relative;
+}
+.profileImg > img {
+    width: 100%;
+    position: absolute;
+    top: -100px;
+    border: 4px solid white;
+    border-radius: 50%;
+}
+.profileImgCont button {
+    border: 1px solid gray;
+    background-color: transparent;
+    padding: 8px 12px;
+    border-radius: 24px;
+    font-weight: 500;
+    transition: background-color 0.5s;
+}
+.profileImgCont button:hover {
+    background-color: lightgray;
+}

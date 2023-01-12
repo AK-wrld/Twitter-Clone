@@ -10,7 +10,7 @@ app.use(methodOverride('_method'));
 const port=80;
 
 app.use(express.urlencoded({extended:true}))
-app.use(express.static(path.join(__dirname,'static')))
+app.use(express.static(path.join(__dirname,'public')))
 app.set('view engine', 'hbs'); 
 hbs.registerPartials(__dirname + '/views/partials', function (err) {});
 
@@ -30,6 +30,7 @@ app.get('/',(req,res)=> {
 
 app.get('/login',(req,res)=> {
     res.render('login')
+
 })
 
 //Confirming User and fetching Data
@@ -49,13 +50,9 @@ app.post('/home',async (req,res)=> {
     }
     const tweets = await Twitter.find({username:username})
     // console.log(tweets)
-    res.render('home',{
-        
-        username:username,
-        tweets:tweets,
-        name:user[0].name
-    })
+    res.redirect(`home/${username}`)
 })
+
 
 //Enpoints for Signup
 app.get('/signup',(req,res)=> {
@@ -73,19 +70,54 @@ app.post('/newuser',async(req,res)=> {
 
 app.post('/addtweet/:username/:name',async(req,res)=>{
     const {username,name} = req.params;
+    let date = new Date(Date.now())
+    
+    // console.log(hours)
     const newTweet = await Twitter.create({
         name:name,
         username:username,
-        description:req.body.description
+        description:req.body.description,
+        date:date.toDateString()
     })
-    res.redirect('/home')
+    console.log(username)
+    res.status(200).redirect(`/home/${username}`)
+    // res.send()
+})
+app.get('/home/:username', async(req,res)=>{
+    const {username}=req.params
+    const user = await User.find({username:username})
+    const tweets = await Twitter.find({username:username})
+    res.render('home',{
+        username:username,
+        tweets:tweets,
+        name:user[0].name,
+        
+        
+    })
 })
 
-
-
-app.get('/profile',(req,res)=>{
-    res.render('profile')
+app.get('/profile/:username',async(req,res)=> {
+    const {username}=req.params
+    const user = await User.find({username:username})
+    const tweets = await Twitter.find({username:username})
+    res.render('profile',{
+        username:username,
+        tweets:tweets,
+        name:user[0].name,
+        
+        
+    })
 })
+
+app.get('/deletetweet/:_id',async(req,res)=>{
+    const {_id} = req.params;
+    const tweetObject = await Twitter.find({_id:_id});
+    const username = tweetObject.username ;
+    await Twitter.findByIdAndRemove(_id);
+    res.status(200).redirect(`/home/${username}`)
+}
+)
+
 app.listen(port,()=> {
     console.log(`Server running at port ${port}`);
 })

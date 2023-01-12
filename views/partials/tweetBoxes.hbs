@@ -9,7 +9,9 @@
     </div>
     <div class="container userCont">
         <div class="container username">
-            <span><strong>{{this.name}}</strong></span>&nbsp; <span style="color: gray;font-size: 15px;">@{{this.username}}</span>&nbsp;<span style="color: gray;font-size: 13px;">.{{this.date}}</span>
+
+            <span><strong>{{this.name}}</strong></span>&nbsp; <span style="color: gray;font-size: 15px;">@{{this.username}}</span>&nbsp;<span style="color: gray;font-size: 13px;">.{{this.date}}</span> &nbsp;<span><form action="/deletetweet/{{this._id}}" method="get"><button type="submit" >X</button></form> </span>
+
         </div>
         <div class="container tweetShow">
             <p>{{this.description}}</p>

@@ -109,6 +109,15 @@ app.get('/profile/:username',async(req,res)=> {
     })
 })
 
+app.get('/deletetweet/:_id',async(req,res)=>{
+    const {_id} = req.params;
+    const tweetObject = await Twitter.find({_id:_id});
+    const username = tweetObject.username ;
+    await Twitter.findByIdAndRemove(_id);
+    res.status(200).redirect(`/home/${username}`)
+}
+)
+
 app.listen(port,()=> {
     console.log(`Server running at port ${port}`);
 })

@@ -50,12 +50,7 @@ app.post('/home',async (req,res)=> {
     }
     const tweets = await Twitter.find({username:username})
     // console.log(tweets)
-    res.render('home',{
-        
-        username:username,
-        tweets:tweets,
-        name:user[0].name
-    })
+    res.redirect(`home/${username}`)
 })
 
 
@@ -75,16 +70,19 @@ app.post('/newuser',async(req,res)=> {
 
 app.post('/addtweet/:username/:name',async(req,res)=>{
     const {username,name} = req.params;
+    let date = new Date(Date.now())
+    
+    // console.log(hours)
     const newTweet = await Twitter.create({
         name:name,
         username:username,
-        description:req.body.description
+        description:req.body.description,
+        date:date.toDateString()
     })
     console.log(username)
-    res.status("200").redirect(`/home/${username}`)
+    res.status(200).redirect(`/home/${username}`)
     // res.send()
 })
-
 app.get('/home/:username', async(req,res)=>{
     const {username}=req.params
     const user = await User.find({username:username})
@@ -93,10 +91,11 @@ app.get('/home/:username', async(req,res)=>{
         username:username,
         tweets:tweets,
         name:user[0].name,
-        date:user[0].date,
+        
         
     })
 })
+
 app.get('/profile/:username',async(req,res)=> {
     const {username}=req.params
     const user = await User.find({username:username})
@@ -105,7 +104,7 @@ app.get('/profile/:username',async(req,res)=> {
         username:username,
         tweets:tweets,
         name:user[0].name,
-        date:user[0].date,
+        
         
     })
 })

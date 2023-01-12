@@ -1,7 +1,7 @@
 
    
     <div class="d-flex flex-column flex-shrink-0  bg-light sidebarContainer" >
-    <div style="position: fixed;top:70px">
+    <div style="position: fixed;top:70px;width:280px">
 
 
     <ul class="nav nav-pills flex-column ">
@@ -62,7 +62,7 @@
         </a>
       </li>
       <li class="TweetBtnLi">
-        <button type="button" class="btn btn-primary sidebarTweetBtn" style="">Tweet</button>
+        <button type="button" class="btn btn-primary sidebarTweetBtn" style="width:70%">Tweet</button>
       </li>
     </ul>
     
@@ -71,7 +71,14 @@
         <img src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
         <span><strong>{{name}}</strong></span>
       </a>
-      
+      <ul class="dropdown-menu text-small shadow">
+        <li>
+          <a class="dropdown-item" href="/login"> <strong>Add an existing account</strong> </a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/login"> <strong>Log out @{{username}}</strong> </a>
+        </li>
+      </ul>
     </div>
 
     </div>

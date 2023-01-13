@@ -79,12 +79,13 @@ app.post('/addtweet/:username/:name',async(req,res)=>{
         description:req.body.description,
         date:date.toDateString()
     })
-    console.log(username)
+    // console.log(username)
     res.status(200).redirect(`/home/${username}`)
     // res.send()
 })
 app.get('/home/:username', async(req,res)=>{
     const {username}=req.params
+    // console.log(username)
     const user = await User.find({username:username})
     const tweets = await Twitter.find({username:username})
     res.render('home',{
@@ -112,7 +113,9 @@ app.get('/profile/:username',async(req,res)=> {
 app.get('/deletetweet/:_id',async(req,res)=>{
     const {_id} = req.params;
     const tweetObject = await Twitter.find({_id:_id});
-    const username = tweetObject.username ;
+
+    const username = tweetObject[0].username ;
+    console.log(username)
     await Twitter.findByIdAndRemove(_id);
     res.status(200).redirect(`/home/${username}`)
 }

@@ -31,23 +31,29 @@
            <div class="imgCardCont container"></div>
            <div class="profileCont container">
             <div class="profileImgCont container">
+
               <div class="profileImg">
-              <img src="/Images/aaygeepic.png" alt="">
+              <form action="/editimg/{{username}}" method="get">
+              <button type="submit">
+              <img src={{user.userimage}} alt="" width="170px" height="170px">
+
+              </button>
+              </form>
 
               </div>
-              <form action="/editprofile" method="post">
+              <form action="#" method="get">
               <button type="submit">Edit Profile</button>
               </form>
             </div>
             <div class="tagCont container">
-              <h4>{{name}}</h4>
+              <h4>{{user.name}}</h4>
               <p>{{username}}</p>
             </div>
             <div class="bioCont container">
               <p>Random Bio</p>
             </div>
             <div class="dateCont container">
-              <p>{{date}}</p>
+              <p>{{user.date}}</p>
             </div>
             <div class="followerCont">
               <span><strong>2</strong> Followers</span>&nbsp;&nbsp;<span><strong>1</strong>Following</span>

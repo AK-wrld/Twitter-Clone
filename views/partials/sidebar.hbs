@@ -1,12 +1,12 @@
 
    
     <div class="d-flex flex-column flex-shrink-0  bg-light sidebarContainer" >
-    <div style="position: fixed;top:70px">
+    <div style="position: fixed;top:70px;width:280px">
 
 
     <ul class="nav nav-pills flex-column ">
       <li class="nav-item py-2 sidebarLi">
-        <a href="#" class="nav-link link-dark" aria-current="page">
+        <a href="/home/{{username}}" class="nav-link link-dark" aria-current="page">
             <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="" style="height: 25px; width: 25px;">
           <span>Home</span>
           
@@ -48,7 +48,7 @@
         </a>
       </li>
       <li class="py-2 sidebarLi">
-        <a href="#" class="nav-link link-dark">
+        <a href="/profile/{{username}}" class="nav-link link-dark">
             <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/original/profile-icon-design-free-vector.jpg" alt="" style="height: 25px; width: 25px;">
           <span>Profile</span>
           
@@ -62,16 +62,23 @@
         </a>
       </li>
       <li class="TweetBtnLi">
-        <button type="button" class="btn btn-primary sidebarTweetBtn" style="">Tweet</button>
+        <button type="button" class="btn btn-primary sidebarTweetBtn" style="width:70%">Tweet</button>
       </li>
     </ul>
     
     <div class="dropdown user" style="padding-top: 50px;" >
       <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false" style="justify-content: center; margin-right:13px">
-        <img src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
-        <span><strong>{{name}}</strong></span>
+        <img src={{user.userimage}} alt="" width="32" height="32" class="rounded-circle me-2">
+        <span><strong>{{user.name}}</strong></span>
       </a>
-      
+      <ul class="dropdown-menu text-small shadow">
+        <li>
+          <a class="dropdown-item" href="/login"> <strong>Add an existing account</strong> </a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/login"> <strong>Log out @{{username}}</strong> </a>
+        </li>
+      </ul>
     </div>
 
     </div>

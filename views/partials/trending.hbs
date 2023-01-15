@@ -27,9 +27,13 @@
     <div class="followbox">
         <h1>Who to follow</h1>
         {{#each userstofollow}}
+        <form action="/profile/{{this.username}}" method="get">
         <div class="boxProfile">
             <div class="picProfile">
+                <button type="submit" id="diffUserImgBtn">
                 <img src="{{this.userimage}}" alt="" style="height: 40px; width: 40px;" style="border-radius: 50%;">
+
+                </button>
             </div>
             <div class="twitterProfile">
                 <span>{{this.name}}</span> <br>
@@ -39,6 +43,7 @@
                 <button type="button" style="background-color: #0F1419; height: 40px; width: 80px; border-radius: 23px; border: 0px; color: white;">Follow</button>
             </div>
         </div>
+        </form>
         {{/each}}
 
         

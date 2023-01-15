@@ -39,14 +39,14 @@
                 <form action="/profile/{{username}}" method="get">
                 <button type="submit" class="profileBtn">
 
-                <img src="/Images/twitterLogo.png" alt="">
+                <img src={{user.userimage}} alt="" id="profImg">
                 </button>
 
                 </form>
             </div>
             <div class="container writingArea">
 
-                <form action="/addtweet/{{username}}/{{name}}" method="post">
+                <form action="/addtweet/{{username}}/{{user.name}}" method="post">
 
                 <div class="textArea container">
                     <textarea name="description" id="tweetDesc" cols="45" rows="2" placeholder="Whats Happening?" style="border: none;"></textarea><hr class="hr">

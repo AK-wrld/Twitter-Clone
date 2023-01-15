@@ -16,8 +16,8 @@ const TweetSchema = new Schema({
     },
     
     date: {
-        type: Date,
-        default : Date.now
+        type:String
+        
     },
 
   });

@@ -26,43 +26,28 @@
 
     <div class="followbox">
         <h1>Who to follow</h1>
+        {{#each userstofollow}}
+        <form action="/profile/{{this.username}}" method="get">
         <div class="boxProfile">
             <div class="picProfile">
-                <img src="/Images/aaygeepic.png" alt="" style="height: 40px; width: 40px;">
-            </div>
-            <div class="twitterProfile">
-                <span>Ansh</span> <br>
-                <span>@aaygeee</span>
-            </div>
-            <div class="followProfile">
-                <button type="button" style="background-color: #0F1419; height: 40px; width: 80px; border-radius: 23px; border: 0px; color: white;">Follow</button>
-            </div>
-        </div>
+                <button type="submit" id="diffUserImgBtn">
+                <img src="{{this.userimage}}" alt="" style="height: 40px; width: 40px;" style="border-radius: 50%;">
 
-        <div class="boxProfile">
-            <div class="picProfile">
-                <img src="/Images/akkspic.png" alt="" style="height: 40px; width: 40px;">
+                </button>
             </div>
             <div class="twitterProfile">
-                <span>Akks</span> <br>
-                <span>@noobher</span>
+                <span>{{this.name}}</span> <br>
+                <span>@{{this.username}}</span>
             </div>
             <div class="followProfile">
                 <button type="button" style="background-color: #0F1419; height: 40px; width: 80px; border-radius: 23px; border: 0px; color: white;">Follow</button>
             </div>
         </div>
+        </form>
+        {{/each}}
 
-        <div class="boxProfile">
-            <div class="picProfile">
-                <img src="/Images/rhiiipic.png" alt="" style="height: 40px; width: 40px;">
-            </div>
-            <div class="twitterProfile">
-                <span>Rhiii</span> <br>
-                <span>@ewhooper</span>
-            </div>
-            <div class="followProfile">
-                <button type="button" style="background-color: #0F1419; height: 40px; width: 80px; border-radius: 23px; border: 0px; color: white;">Follow</button>
-            </div>
-        </div>
+        
+
+        
         <p>Show More</p>
     </div>

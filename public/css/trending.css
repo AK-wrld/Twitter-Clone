@@ -19,7 +19,18 @@
     /* display: flex; */
     /* justify-content:space-around ; */
 }
+#diffUserImgBtn {
+    border: none;
+    background-color: transparent;
 
+}
+#diffUserImgBtn > img {
+    transition: filter 0.5s;
+    border-radius: 50%;
+}
+#diffUserImgBtn > img:hover {
+    filter: brightness(0.8);
+}
 .twitterProfile{
     margin: auto;
     /* display: flex; */

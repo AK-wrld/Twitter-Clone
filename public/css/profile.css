@@ -24,12 +24,20 @@
     width: 30%;
     position: relative;
 }
-.profileImg > img {
-    width: 100%;
+.profileImg  img {
+   
     position: absolute;
     top: -100px;
+    left: -12px;
     border: 4px solid white;
     border-radius: 50%;
+}
+.profileImg img:hover {
+    filter: brightness(0.8);
+    
+}
+.profileImg img:hover::after {
+    content: "Change Image";
 }
 .profileImgCont button {
     border: 1px solid gray;

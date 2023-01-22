@@ -73,10 +73,13 @@
       </a>
       <ul class="dropdown-menu text-small shadow">
         <li>
-          <a class="dropdown-item" href="/login"> <strong>Add an existing account</strong> </a>
+          <form action="/signup" method="get" class="dropdown-item">
+          <button type="submit" style="border: none;background-color:transparent"><strong>Add an existing account</strong></button>
+          </form>
+          
         </li>
         <li>
-          <a class="dropdown-item" href="/login"> <strong>Log out @{{username}}</strong> </a>
+          <p class="dropdown-item" id="logout" style="margin: 0px;"> <strong>Log out @{{username}}</strong> </p>
         </li>
       </ul>
     </div>

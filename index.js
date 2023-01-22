@@ -60,14 +60,23 @@ app.get('/signup', (req, res) => {
 })
 app.post('/newuser', async (req, res) => {
     const { name, username, password } = req.body;
-    let date = new Date(Date.now())
-    const newUser = await User.create({
-        name: name,
-        username: username,
-        password: password,
-        date: date.toDateString()
-    })
-    res.redirect("/login")
+    
+    const user = await User.find({username})
+    
+    if(user.length==0) {
+
+        let date = new Date(Date.now())
+        const newUser = await User.create({
+            name: name,
+            username: username,
+            password: password,
+            date: date.toDateString()
+        })
+        res.redirect("/login")
+    }
+    else {
+        res.send("Username already exists") 
+    }
 })
 
 app.post('/addtweet/:username/:name', async (req, res) => {

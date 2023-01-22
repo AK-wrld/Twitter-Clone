@@ -54,3 +54,6 @@
     transition: background-color 0.5s;
     background-color: #1876b5 !important;
 }
+#logout {
+    cursor: pointer;
+}
